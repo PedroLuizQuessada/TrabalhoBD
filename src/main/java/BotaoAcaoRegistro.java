@@ -145,6 +145,7 @@ public class BotaoAcaoRegistro implements ActionListener {
 
             switch (this.botao.getText()){
                 case "Excluir":
+                    pStmt.executeUpdate();
                     break;
 
                 case "Editar pista":
