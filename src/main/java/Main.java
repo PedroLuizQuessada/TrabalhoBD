@@ -51,7 +51,6 @@ public class Main extends JFrame implements ActionListener {
         }
     }
 
-    //TODO trycatches separados no trab do Renê
     private void sincronizaBD() throws ClassNotFoundException, SQLException, NullPointerException {
         Class.forName("org.hsql.jdbcDriver");
         con = DriverManager.getConnection("jdbc:HypersonicSQL:hsql://localhost:8080", "sa", "");
@@ -200,6 +199,26 @@ public class Main extends JFrame implements ActionListener {
         }
         catch (SQLException exception){
             //Tabela já criada
+        }
+
+        //INSERE TUPLAS INICIAIS
+        try{
+            stmt.executeUpdate("INSERT INTO Pista (pista_nome, pista_capacidade, pista_voltas)VALUES ('Monza', 20000, 50)");
+            stmt.executeUpdate("INSERT INTO Campeonato(camp_ano, camp_nome, camp_cod) VALUES ('2021-01-01', 'Formula 1', 1)");
+            stmt.executeUpdate("INSERT INTO Corrida (cod_corrida, data_corrida, fk_camp_codigo)VALUES (1, '2021-08-08', 1)");
+            stmt.executeUpdate("INSERT INTO Empresa (emp_nome, emp_CNPJ)VALUES ('Pirelli', '34.404.418/0001-86')");
+            stmt.executeUpdate("INSERT INTO Equipe (equipe_nome, cod_equipe, equipe_engChefe, equipe_nac) VALUES ('Red Bull', 1, 'Christian Horner', 'Inglaterra')");
+            stmt.executeUpdate("INSERT INTO Piloto (cod_piloto, piloto_nome, piloto_apelido, piloto_nasc, piloto_nac) VALUES (1, 'Max Verstappen', 'VER', '1997-09-30', 'Bélgica')");
+            stmt.executeUpdate("INSERT INTO Carro (carro_ano, carro_motor, fk_cod_piloto) VALUES (2021, 'Honda', 1)");
+            stmt.executeUpdate("INSERT INTO Patrocinia (fk_cod_equipe, fk_emp_CNPJ)VALUES (1, '34.404.418/0001-86')");
+            stmt.executeUpdate("INSERT INTO ATUACAOPILOTO (fk_cod_piloto, fk_cod_equipe, atua_ano) VALUES (1, 1, '2021-01-01')");
+            stmt.executeUpdate("INSERT INTO COMPETECORRE (comp_posLargada, fk_cod_piloto, fk_cod_corrida)VALUES (1, 1, 1)");
+            stmt.executeUpdate("INSERT INTO CORRIDASREALIZADAS (fk_pista_nome, fk_cod_corrida)VALUES ('Monza', 1)");
+            stmt.executeUpdate("INSERT INTO VOLTATEMPO (fk_corrida_codigo, fk_piloto_codigo, cod_volta, tempo_volta) VALUES (1, 1, 1, 81.046)");
+        }
+        catch (SQLException exception){
+            exception.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Falha ao inserir tuplas iniciais.\n" + exception.getMessage(), "Falha", JOptionPane.ERROR_MESSAGE);
         }
     }
 

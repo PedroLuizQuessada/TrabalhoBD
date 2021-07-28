@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-//TODO triggers manuais
+
 public class BotaoAcaoRegistro implements ActionListener {
     private final DataUtil dataUtil = new DataUtil();
     private final ValidacoesUtil validacoesUtil = new ValidacoesUtil();
