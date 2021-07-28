@@ -99,7 +99,7 @@ public class Consultar extends JFrame {
             setTitle(String.format("Consulta tabela %s", tabela));
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setVisible(true);
-            setSize(900, 300);
+            setSize(1150, 300);
             setResizable(false);
         }
         catch (SQLException exception){
@@ -297,6 +297,7 @@ public class Consultar extends JFrame {
 
             String codigo = rs.getString(3);
             tf3 = new JTextField(codigo);
+            tf3.setEditable(false);
             tf3.addKeyListener(new FiltraNumeros());
             tf3.setColumns(3);
             tf3.setHorizontalAlignment(JTextField.CENTER);
@@ -338,6 +339,7 @@ public class Consultar extends JFrame {
 
             String codigo = rs.getString(1);
             tf1 = new JTextField(codigo);
+            tf1.setEditable(false);
             tf1.addKeyListener(new FiltraNumeros());
             tf1.setColumns(3);
             tf1.setHorizontalAlignment(JTextField.CENTER);
@@ -419,6 +421,7 @@ public class Consultar extends JFrame {
             c.gridx++;
             String codigo = rs.getString(2);
             tf2 = new JTextField(codigo);
+            tf2.setEditable(false);
             tf2.addKeyListener(new FiltraNumeros());
             tf2.setColumns(3);
             tf2.setHorizontalAlignment(JTextField.CENTER);
@@ -461,6 +464,7 @@ public class Consultar extends JFrame {
 
             String codigo = rs.getString(1);
             tf1 = new JTextField(codigo);
+            tf1.setEditable(false);
             tf1.addKeyListener(new FiltraNumeros());
             tf1.setColumns(3);
             tf1.setHorizontalAlignment(JTextField.CENTER);
@@ -500,8 +504,6 @@ public class Consultar extends JFrame {
             c.gridx++;
             modalPanel.add(excluir = new JButton("Excluir"), c);
             excluir.addActionListener(new BotaoAcaoRegistro(excluir, this, "DELETE FROM PILOTO WHERE cod_piloto = " + tf1.getText(), con));
-
-            setPreferredSize(new Dimension(1150, 300));
         }
 
         return tabelaVazia;
@@ -709,6 +711,7 @@ public class Consultar extends JFrame {
 
             String codVolta = rs.getString(3);
             tf2 = new JTextField(codVolta);
+            tf2.setEditable(false);
             tf2.addKeyListener(new FiltraNumeros());
             tf2.setColumns(3);
             modalPanel.add(tf2, c);

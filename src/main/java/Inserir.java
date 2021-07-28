@@ -310,7 +310,7 @@ public class Inserir extends JFrame {
     }
 
     private void limpaTelaPista(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaPista(tf1, tf2, tf3, con);
+        validacoesUtil.validaPista(tf1, tf2, tf3, con, null);
 
         pStmt.setString(1, tf1.getText());
         pStmt.setString(2, tf2.getText());
@@ -318,14 +318,14 @@ public class Inserir extends JFrame {
     }
 
     private void limpaTelaCampeonato(Connection con) throws CampoVazioException, DataInvalidaException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaCampeonato(tf1, tf2, con);
+        validacoesUtil.validaCampeonato(tf1, tf2, con, null);
 
         pStmt.setString(1, dataUtil.stringParaSqlDate(tf1.getText()).toString());
         pStmt.setString(2, tf2.getText());
     }
 
     private void limpaTelaCorrida(Connection con) throws CampoVazioException, DataInvalidaException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaCorrida(tf1, tf2, cb1, con);
+        validacoesUtil.validaCorrida(tf1, tf2, cb1, con, null);
 
         pStmt.setString(1, tf1.getText());
         pStmt.setString(2, dataUtil.stringParaSqlDate(tf2.getText()).toString());
@@ -333,14 +333,14 @@ public class Inserir extends JFrame {
     }
 
     private void limpaTelaEmpresa(Connection con) throws CampoVazioException, CnpjInvalidoException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaEmpresa(tf1, tf2, con);
+        validacoesUtil.validaEmpresa(tf1, tf2, con, null);
 
         pStmt.setString(1, tf1.getText());
         pStmt.setString(2, tf2.getText());
     }
 
     private void limpaTelaEquipe(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaEquipe(tf1, tf2, tf3, con);
+        validacoesUtil.validaEquipe(tf1, tf2, tf3, con, null);
 
         String nacionalidade;
         if(tf4.getText().isEmpty()){
@@ -357,7 +357,7 @@ public class Inserir extends JFrame {
     }
 
     private void limpaTelaPiloto(Connection con) throws CampoVazioException, DataInvalidaException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaPiloto(tf1, tf2, tf4, tf5, con);
+        validacoesUtil.validaPiloto(tf1, tf2, tf4, tf5, con, null);
 
         String apelido;
         if(tf3.getText().isEmpty()){
@@ -375,7 +375,7 @@ public class Inserir extends JFrame {
     }
 
     private void limparTelaCarro(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaCarro(tf1, tf2, cb1, con);
+        validacoesUtil.validaCarro(tf1, tf2, cb1, con, null, null);
 
         pStmt.setString(1, tf1.getText());
         pStmt.setString(2, tf2.getText());
@@ -383,14 +383,14 @@ public class Inserir extends JFrame {
     }
 
     private void limparTelaPatrocinia(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaPatrocinia(cb1, cb2, con);
+        validacoesUtil.validaPatrocinia(cb1, cb2, con, null, null);
 
         pStmt.setString(1, cb1.getSelectedItem().toString());
         pStmt.setString(2, cb2.getSelectedItem().toString());
     }
 
     private void limparTelaAtuacaoPiloto(Connection con) throws CampoVazioException, DataInvalidaException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaAtuacaoPiloto(tf1, cb1, cb2, con);
+        validacoesUtil.validaAtuacaoPiloto(tf1, cb1, cb2, con, null, null);
 
         pStmt.setString(1, cb1.getSelectedItem().toString());
         pStmt.setString(2, cb2.getSelectedItem().toString());
@@ -398,7 +398,7 @@ public class Inserir extends JFrame {
     }
 
     private void limparTelaCompeteCorre(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaCompeteCorre(tf1, cb1, cb2, con);
+        validacoesUtil.validaCompeteCorre(tf1, cb1, cb2, con, null, null);
 
         pStmt.setString(1, tf1.getText());
         pStmt.setString(2, cb1.getSelectedItem().toString());
@@ -406,7 +406,7 @@ public class Inserir extends JFrame {
     }
 
     private void limparTelaCorridaRealizada(Connection con) throws CampoVazioException, PkDuplicadaException, SQLException{
-        validacoesUtil.validaCorridaRealizada(cb1, cb2, con);
+        validacoesUtil.validaCorridaRealizada(cb1, cb2, con, null, null);
 
         pStmt.setString(1, cb1.getSelectedItem().toString());
         pStmt.setString(2, cb2.getSelectedItem().toString());

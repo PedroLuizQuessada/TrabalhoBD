@@ -89,7 +89,6 @@ public class Main extends JFrame implements ActionListener {
         }
         catch (SQLException exception){
             //Tabela já criada
-            exception.printStackTrace();
         }
 
         try{
@@ -132,7 +131,7 @@ public class Main extends JFrame implements ActionListener {
                     "\n(carro_ano INTEGER NOT NULL," +
                     "\ncarro_motor VARCHAR(30) NOT NULL," +
                     "\nfk_cod_piloto INTEGER NOT NULL," +
-                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto (cod_piloto) ON UPDATE CASCADE," +
+                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto (cod_piloto)," +
                     "\nPRIMARY KEY(carro_ano, carro_motor))");
         }
         catch (SQLException exception){
@@ -143,8 +142,8 @@ public class Main extends JFrame implements ActionListener {
             stmt.executeUpdate("CREATE TABLE PATROCINIA" +
                     "\n(fk_cod_equipe INTEGER NOT NULL," +
                     "\nfk_emp_CNPJ VARCHAR(20) NOT NULL," +
-                    "\nFOREIGN KEY(fk_emp_CNPJ) REFERENCES Empresa(emp_CNPJ) ON UPDATE CASCADE," +
-                    "\nFOREIGN KEY(fk_cod_equipe) REFERENCES Equipe(cod_equipe) ON UPDATE CASCADE," +
+                    "\nFOREIGN KEY(fk_emp_CNPJ) REFERENCES Empresa(emp_CNPJ)," +
+                    "\nFOREIGN KEY(fk_cod_equipe) REFERENCES Equipe(cod_equipe)," +
                     "\nPRIMARY KEY (fk_cod_equipe, fk_emp_CNPJ))");
         }
         catch (SQLException exception){
@@ -156,8 +155,8 @@ public class Main extends JFrame implements ActionListener {
                     "\n(fk_cod_piloto INTEGER NOT NULL," +
                     "\nfk_cod_equipe INTEGER NOT NULL," +
                     "\natua_ano DATE NOT NULL," +
-                    "\nFOREIGN KEY(fk_cod_equipe) REFERENCES Equipe(cod_equipe) ON UPDATE CASCADE," +
-                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto(cod_piloto) ON UPDATE CASCADE," +
+                    "\nFOREIGN KEY(fk_cod_equipe) REFERENCES Equipe(cod_equipe)," +
+                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto(cod_piloto)," +
                     "\nPRIMARY KEY(fk_cod_piloto, atua_ano))");
         }
         catch (SQLException exception){
@@ -170,8 +169,8 @@ public class Main extends JFrame implements ActionListener {
                     "\nfk_cod_piloto INTEGER NOT NULL," +
                     "\nfk_cod_corrida INTEGER NOT NULL," +
                     "\nPRIMARY KEY(fk_cod_piloto, fk_cod_corrida)," +
-                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto (cod_piloto) ON UPDATE CASCADE," +
-                    "\nFOREIGN KEY(fk_cod_corrida) REFERENCES Corrida (cod_corrida) ON UPDATE CASCADE)");
+                    "\nFOREIGN KEY(fk_cod_piloto) REFERENCES Piloto (cod_piloto)," +
+                    "\nFOREIGN KEY(fk_cod_corrida) REFERENCES Corrida (cod_corrida))");
         }
         catch (SQLException exception){
             //Tabela já criada
@@ -182,8 +181,8 @@ public class Main extends JFrame implements ActionListener {
                     "\n(fk_pista_nome VARCHAR(30) NOT NULL," +
                     "\nfk_cod_corrida INTEGER NOT NULL," +
                     "\nPRIMARY KEY(fk_pista_nome, fk_cod_corrida)," +
-                    "\nFOREIGN KEY (fk_pista_nome) REFERENCES Pista(pista_nome) ON UPDATE CASCADE," +
-                    "\nFOREIGN KEY (fk_cod_corrida) REFERENCES Corrida(cod_corrida) ON UPDATE CASCADE)");
+                    "\nFOREIGN KEY (fk_pista_nome) REFERENCES Pista(pista_nome)," +
+                    "\nFOREIGN KEY (fk_cod_corrida) REFERENCES Corrida(cod_corrida))");
         }
         catch (SQLException exception){
             //Tabela já criada
@@ -196,8 +195,8 @@ public class Main extends JFrame implements ActionListener {
                     "\ncod_volta INTEGER NOT NULL IDENTITY," +
                     "\ntempo_volta REAL NOT NULL," +
                     "\nPRIMARY KEY(cod_volta)," +
-                    "\nFOREIGN KEY(fk_corrida_codigo) REFERENCES Corrida(cod_corrida) ON UPDATE CASCADE," +
-                    "\nFOREIGN KEY(fk_piloto_codigo) REFERENCES Piloto(cod_piloto) ON UPDATE CASCADE)");
+                    "\nFOREIGN KEY(fk_corrida_codigo) REFERENCES Corrida(cod_corrida)," +
+                    "\nFOREIGN KEY(fk_piloto_codigo) REFERENCES Piloto(cod_piloto))");
         }
         catch (SQLException exception){
             //Tabela já criada
